@@ -3,6 +3,8 @@
 This is the frontend application for **Online Grocery Store**, built with modern Vue 3, TypeScript, Pinia for state management, PrimeVue for UI components, and TailwindCSS for styling.  
 It communicates with a Spring Boot backend to display products, pricing, discount rules, and generate order summaries.
 
+DEMO: https://youtu.be/Odw-kwWbVJ8
+
 ---
 
 ## 🚀 Tech Stack
