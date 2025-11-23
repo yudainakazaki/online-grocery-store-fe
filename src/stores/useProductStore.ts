@@ -1,8 +1,8 @@
-import { defineStore } from "pinia";
-import api from "@/api/client";
-import type { Product } from "@/types/Product";
+import { defineStore } from 'pinia'
+import api from '@/api/client'
+import type { Product } from '@/types/Product'
 
-export const useProductStore = defineStore("products", {
+export const useProductStore = defineStore('products', {
   state: () => ({
     products: [] as Product[],
     loading: false,
@@ -15,16 +15,15 @@ export const useProductStore = defineStore("products", {
 
   actions: {
     async loadProductsIfEmpty() {
-      if (!this.isEmpty) return;
+      if (!this.isEmpty) return
 
-      this.loading = true;
+      this.loading = true
       try {
-        const res = await api.get("/items");
-        this.products = res.data;
-        console.log("Loaded products:", this.products);
+        const res = await api.get('/items')
+        this.products = res.data
       } finally {
-        this.loading = false;
+        this.loading = false
       }
-    }
+    },
   },
-});
+})

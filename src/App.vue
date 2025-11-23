@@ -2,23 +2,19 @@
 <template>
   <div class="app-container min-h-screen flex flex-col">
     <nav class="p-3 sticky top-0 z-10">
-      <Toolbar style="--p-toolbar-background: white; border: none; padding: 1rem; opacity: 0.90;">
+      <Toolbar style="--p-toolbar-background: white; border: none; padding: 1rem; opacity: 0.9">
         <template #start>
           <div class="flex items-center gap-5">
             <a href="/home">
-              <img
-                src="/supermarket-svgrepo-com.svg"
-                alt="store icon"
-                class="h-9 w-9"
-              />
-            </a>]
+              <img src="/supermarket-svgrepo-com.svg" alt="store icon" class="h-9 w-9" /> </a
+            >]
             <RouterLink to="/home" class="nav-link">Home</RouterLink>
             <RouterLink to="/prices" class="nav-link">Prices</RouterLink>
             <RouterLink to="/rules" class="nav-link">Rules</RouterLink>
           </div>
         </template>
 
-         <template #end>
+        <template #end>
           <div class="relative cursor-pointer" @click="$router.push('/cart')">
             <i class="pi pi-shopping-cart text-black text-3xl"></i>
             <Badge
@@ -30,7 +26,6 @@
             />
           </div>
         </template>
-
       </Toolbar>
     </nav>
 
@@ -47,22 +42,22 @@
 </template>
 
 <script setup lang="ts">
-import Toolbar from "primevue/toolbar";
-import DefaultLayout from "./layout/DefaultLayout.vue";
-import { useCartStore } from "@/stores/useCartStore";
-import { computed, watch } from "vue";
+import Toolbar from 'primevue/toolbar'
+import DefaultLayout from './layout/DefaultLayout.vue'
+import { useCartStore } from '@/stores/useCartStore'
+import { computed, watch } from 'vue'
 
-const cart = useCartStore();
-const itemCount = computed(() => cart.totalItemCount);
+const cart = useCartStore()
+const itemCount = computed(() => cart.totalItemCount)
 
 // Watch the whole cart
 watch(
   () => cart.items,
   (newVal) => {
-    console.log("🛒 Cart updated:", newVal);
+    console.log('🛒 Cart updated:', newVal)
   },
-  { deep: true }
-);
+  { deep: true },
+)
 </script>
 
 <style>

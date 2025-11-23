@@ -1,52 +1,50 @@
 <template>
-  <div class="max-w-3xl mx-auto mt-8">
-    <h1 class="text-3xl font-bold mb-6 text-black">Discount Rules</h1>
+  <div>
+    <AppLoader v-if="rulesStore.loading" />
+    <div v-else class="max-w-3xl mx-auto mt-8">
+      <h1 class="text-3xl font-bold mb-6 text-black">Discount Rules</h1>
 
-    <!-- Bread Rules -->
-    <h2 class="text-xl font-semibold mb-2 text-black">Bread Rules</h2>
-    <DataTable :value="breadRows" class="rounded-lg overflow-hidden mb-6">
-      <Column field="rule" header="Rule" />
-    </DataTable>
+      <!-- Bread Rules -->
+      <h2 class="text-xl font-semibold mb-2 text-black">Bread Rules</h2>
+      <DataTable :value="breadRows" class="rounded-lg overflow-hidden mb-6">
+        <Column field="rule" header="Rule" />
+      </DataTable>
 
-    <!-- Vegetable Rules -->
-    <h2 class="text-xl font-semibold mb-2 text-black">Vegetable Rules</h2>
-    <DataTable :value="vegetableRows" class="rounded-lg overflow-hidden mb-6">
-      <Column field="rule" header="Rule" />
-    </DataTable>
+      <!-- Vegetable Rules -->
+      <h2 class="text-xl font-semibold mb-2 text-black">Vegetable Rules</h2>
+      <DataTable :value="vegetableRows" class="rounded-lg overflow-hidden mb-6">
+        <Column field="rule" header="Rule" />
+      </DataTable>
 
-    <!-- Beer Rules -->
-    <h2 class="text-xl font-semibold mb-2 text-black">Beer Rules</h2>
-    <DataTable :value="beerRows" class="rounded-lg overflow-hidden">
-      <Column field="rule" header="Rule" />
-    </DataTable>
+      <!-- Beer Rules -->
+      <h2 class="text-xl font-semibold mb-2 text-black">Beer Rules</h2>
+      <DataTable :value="beerRows" class="rounded-lg overflow-hidden">
+        <Column field="rule" header="Rule" />
+      </DataTable>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Column from "primevue/column";
-import DataTable from "primevue/datatable";
-import { computed, onMounted } from "vue";
-import { useRulesStore } from "@/stores/useRulesStore";
+import AppLoader from '../components/AppLoader.vue'
+import Column from 'primevue/column'
+import DataTable from 'primevue/datatable'
+import { computed, onMounted } from 'vue'
+import { useRulesStore } from '@/stores/useRulesStore'
 
-const rulesStore = useRulesStore();
+const rulesStore = useRulesStore()
 
 onMounted(() => {
-  rulesStore.loadRules();
-});
+  rulesStore.loadRules()
+})
 
-const rules = computed(() => rulesStore.getRules);
+const rules = computed(() => rulesStore.getRules)
 
-const breadRows = computed(() =>
-  rules.value?.breadRules?.map(r => ({ rule: r })) ?? []
-);
+const breadRows = computed(() => rules.value?.breadRules?.map((r) => ({ rule: r })) ?? [])
 
-const vegetableRows = computed(() =>
-  rules.value?.vegetableRules?.map(r => ({ rule: r })) ?? []
-);
+const vegetableRows = computed(() => rules.value?.vegetableRules?.map((r) => ({ rule: r })) ?? [])
 
-const beerRows = computed(() =>
-  rules.value?.beerRules?.map(r => ({ rule: r })) ?? []
-);
+const beerRows = computed(() => rules.value?.beerRules?.map((r) => ({ rule: r })) ?? [])
 </script>
 
 <style>

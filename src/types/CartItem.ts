@@ -1,9 +1,9 @@
-import type { Product } from "./Product";
+import type { Product } from './Product'
 
 export interface CartItem {
-  product: Product;
-  quantity: number;
+  product: Product
+  quantity: number
 
   // Only used for vegetables (grams input UI)
-  weightInGrams?: number;
+  weightInGrams?: number
 }

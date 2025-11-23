@@ -1,7 +1,7 @@
-import { defineStore } from "pinia";
-import api from "@/api/client";
+import { defineStore } from 'pinia'
+import api from '@/api/client'
 
-export const usePricesStore = defineStore("prices", {
+export const usePricesStore = defineStore('prices', {
   state: () => ({
     prices: null,
     loading: false,
@@ -13,18 +13,18 @@ export const usePricesStore = defineStore("prices", {
 
   actions: {
     async loadPrices() {
-      if (this.prices) return; // already loaded
+      if (this.prices) return // already loaded
 
-      this.loading = true;
+      this.loading = true
 
       try {
-        const res = await api.get("/prices");
-        this.prices = res.data;
+        const res = await api.get('/prices')
+        this.prices = res.data
       } catch (e) {
-        console.error(e);
+        console.error(e)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
-    }
-  }
-});
+    },
+  },
+})

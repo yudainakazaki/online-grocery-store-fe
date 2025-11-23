@@ -1,9 +1,9 @@
-import { defineStore } from "pinia";
-import { calculateOrder } from "@/api/order";
-import type { ReceiptSummary } from "@/types/ReceiptSummary";
-import type { OrderRequestItem } from "@/types/OrderRequestItem";
+import { defineStore } from 'pinia'
+import { calculateOrder } from '@/api/order'
+import type { ReceiptSummary } from '@/types/ReceiptSummary'
+import type { OrderRequestItem } from '@/types/OrderRequestItem'
 
-export const useOrderStore = defineStore("order", {
+export const useOrderStore = defineStore('order', {
   state: () => ({
     summary: null as ReceiptSummary | null,
     loading: false,
@@ -12,18 +12,19 @@ export const useOrderStore = defineStore("order", {
   actions: {
     async submitOrder(req: OrderRequestItem[]) {
       if (req.length === 0) {
-        return;
+        this.summary = null
+        return
       }
-      
-      this.loading = true;
+
+      this.loading = true
 
       try {
-        this.summary = await calculateOrder(req);
+        this.summary = await calculateOrder(req)
       } catch (err) {
-        console.error(err);
+        console.error(err)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
-    }
-  }
-});
+    },
+  },
+})

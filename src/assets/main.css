@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tailwindcss-primeui";
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
 
 body {
-    @apply bg-gray-100;
+  @apply bg-gray-100;
 }
