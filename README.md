@@ -7,6 +7,28 @@ DEMO: https://youtu.be/Odw-kwWbVJ8
 
 ---
 
+## Views (pages)
+
+### Home
+This page shows the list of available item and users can add items in their shopping cart.
+
+### Prices
+Table of item prices are available here.
+
+### Rules
+Table of discount rules are available here.
+
+### Cart
+Users see the order summary (called "receipt" in the assignment) if they put more than one item in the cart.
+The summary shows the base price, amount of discount, and final price for each item.
+
+Place order button is a mock button which does not do anything for now but it would actually place an order in a practical web app.
+If there is an invalid product in the cart, the item is skipped and the warning is shown.
+
+If there is no valid item, the place order button is not shown.
+
+---
+
 ## 🚀 Tech Stack
 
 ### **Frontend Framework**
